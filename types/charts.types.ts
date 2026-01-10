@@ -1,20 +1,6 @@
-export interface GenerationMixItem {
-    fuel: string;
-    perc: number;
-}
-
-export interface EnergyInterval {
-    from: string;
-    to: string;
-    generationmix: GenerationMixItem[];
-}
-
-export interface EnergyAPIResponse {
-    data: EnergyInterval[];
-}
-
 export interface DayData {
     date: string;
-    averages: { [fuel: string]: number };
-    cleanEnergyPercent: number;
+    averageFuelUsage: Record<string, number>;
+    totalCleanEnergyPercentage: number;
 }
+export type EnergyDaysResponse = DayData[];
