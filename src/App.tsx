@@ -1,4 +1,5 @@
 import Charts from "../components/Charts.tsx";
+import ChargeWindow from "../components/ChargeWindow.tsx";
 
 
 function App() {
@@ -6,6 +7,7 @@ function App() {
   return (
       <div>
         <Charts/>
+          <ChargeWindow/>
       </div>
   )
 }

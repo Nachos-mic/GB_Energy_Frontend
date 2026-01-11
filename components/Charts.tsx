@@ -17,7 +17,7 @@ function Charts() {
             try {
                 setLoading(true);
 
-                const res = await axios.get<DayData[]>("http://localhost:3100/api/v1/energyinfo/data");
+                const res = await axios.get<DayData[]>("http://localhost:3100/api/v1/energyinfo/generation-mix");
                 setDays(res.data);
             } catch (error) {
                 console.error("Błąd:", error);
