@@ -4,7 +4,7 @@ import type { BestWindow } from "../types/window.types";
 import {API_URL} from "../src/config/api.ts";
 
 function ChargeWindow() {
-    const [hours, setHours] = useState(0);
+    const [hours, setHours] = useState("");
     const [window, setWindow] = useState<BestWindow | null>(null);
     const [loading, setLoading] = useState(false);
 
@@ -18,8 +18,8 @@ function ChargeWindow() {
         try {
             setLoading(true);
 
-            const res = await axios.get<BestWindow>(`${API_URL}/api/v1/energyinfo/charge-window/${hours}`);
-
+            const hours_num = Number(hours);
+            const res = await axios.get<BestWindow>(`${API_URL}/api/v1/energyinfo/charge-window/${hours_num}`);
             setWindow(res.data);
         } catch (error) {
             console.error("Błąd:", error);
@@ -38,7 +38,7 @@ function ChargeWindow() {
                 <input
                     type="number"
                     value={hours}
-                    onChange={(e) => setHours(Number(e.target.value))}
+                    onChange={(e) => setHours(e.target.value)}
                 />
                 <button onClick={fetchWindowData} disabled={loading}>
                     Oblicz najlepsze okno
