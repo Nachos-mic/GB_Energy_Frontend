@@ -45,20 +45,21 @@ function Charts() {
     };
 
     return (
-        <div style={{ padding: 20 }}>
+        <div className="section">
             <h2>Miks energetyczny (3 dni)</h2>
 
-            {loading && <div>Ładowanie...</div>}
-
-            {!loading && !days.length && <div>Brak danych</div>}
+            {loading && <div className="loading">Ładowanie...</div>}
+            {!loading && !days.length && <div className="no-data">Brak danych</div>}
 
             {!loading && days.length > 0 && (
-                <div style={{ display: "flex", gap: 24, flexWrap: "wrap" }}>
+                <div className="charts-grid">
                     {days.map((day) => (
-                        <div key={day.date} style={{ width: 360 }}>
+                        <div key={day.date} className="chart-card">
                             <h3>{day.date}</h3>
-                            <div>Clean energy: {day.totalCleanEnergyPercentage.toFixed(2)}%</div>
-                            <Pie data={makePieData(day)} />
+                            <div className="chart-info">
+                                Udział czystej energii: {day.totalCleanEnergyPercentage}%
+                            </div>
+                            <Pie data={makePieData(day)}/>
                         </div>
                     ))}
                 </div>

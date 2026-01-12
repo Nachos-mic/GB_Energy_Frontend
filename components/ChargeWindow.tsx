@@ -31,37 +31,32 @@ function ChargeWindow() {
     };
 
     return (
-        <div style={{ padding: 20 }}>
-            <h2>Najbardziej optymalne okno czasowe do ładowania (zakres 1-6):</h2>
+        <div className="section">
+            <h2>Optymalne okno ładowania (1-6h)</h2>
 
-            <div style={{ marginBottom: 12 }}>
-                <label>
-                    Czas ładowania (1–6h):{" "}
-                    <input
-                        type="number"
-                        min={1}
-                        max={6}
-                        value={hours}
-                        onChange={(e) => setHours(Number(e.target.value))}
-                    />
-                </label>
-
-                <button onClick={fetchWindowData} disabled={loading} style={{ marginLeft: 8 }}>
-                    Oblicz
+            <div className="form-group">
+                <label>Czas ładowania:</label>
+                <input
+                    type="number"
+                    value={hours}
+                    onChange={(e) => setHours(Number(e.target.value))}
+                />
+                <button onClick={fetchWindowData} disabled={loading}>
+                    Oblicz najlepsze okno
                 </button>
             </div>
 
-            {loading && <div>Liczenie...</div>}
+            {loading && <div className="loading">Liczenie...</div>}
 
             {!loading && window && (
-                <div>
+                <div className="result-card">
                     <div>Start: {formatDateTime(window.start)}</div>
                     <div>Koniec: {formatDateTime(window.end)}</div>
-                    <div>Średni % czystej energii: {window.percentage}%</div>
+                    <div>Średni udział czystych źródeł energii: {window.percentage}%</div>
                 </div>
             )}
 
-            {!loading && !window && <div>Brak danych</div>}
+            {!loading && !window && <div className="no-data">Brak danych</div>}
         </div>
     );
 }
