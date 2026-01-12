@@ -1,6 +1,6 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import axios from "axios";
-import { BestWindow } from "../types/window.types";
+import type { BestWindow } from "../types/window.types";
 import {API_URL} from "../src/config/api.ts";
 
 function ChargeWindow() {
