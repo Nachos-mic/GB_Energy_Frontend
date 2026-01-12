@@ -1,4 +1,4 @@
-#Frontend
+# Aplikacja webowa
 
 Aplikacja została zaimplementowana w stacku: Typescript + React + Vite
 
