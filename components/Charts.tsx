@@ -3,6 +3,7 @@ import axios from "axios";
 import { Pie } from "react-chartjs-2";
 import { Chart as ChartJS, ArcElement, Tooltip, Legend, type ChartData } from "chart.js";
 import type { DayData} from "../types/charts.types.ts";
+import {API_URL} from "../src/config/api.ts";
 
 ChartJS.register(ArcElement, Tooltip, Legend);
 
@@ -17,7 +18,7 @@ function Charts() {
             try {
                 setLoading(true);
 
-                const res = await axios.get<DayData[]>("http://localhost:3100/api/v1/energyinfo/generation-mix");
+                const res = await axios.get<DayData[]>(`${API_URL}/api/v1/energyinfo/generation-mix`);
                 setDays(res.data);
             } catch (error) {
                 console.error("Błąd:", error);

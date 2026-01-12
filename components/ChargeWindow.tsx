@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import axios from "axios";
 import { BestWindow } from "../types/window.types";
+import {API_URL} from "../src/config/api.ts";
 
 function ChargeWindow() {
     const [hours, setHours] = useState(0);
@@ -17,9 +18,7 @@ function ChargeWindow() {
         try {
             setLoading(true);
 
-            const res = await axios.get<BestWindow>(
-                `http://localhost:3100/api/v1/energyinfo/charge-window/${hours}`
-            );
+            const res = await axios.get<BestWindow>(`${API_URL}/api/v1/energyinfo/charge-window/${hours}`);
 
             setWindow(res.data);
         } catch (error) {
